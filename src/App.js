@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import XSSAttack from './components/XSSAttack';
+import SensitiveDataExposure from './components/SensitiveDataExposure';
+
+function HomePage() {
+    return (
+        <div>
+            <h2>Welcome to the Security App</h2>
+            <nav>
+                <ul>
+                    <li>
+                        <Link to="/xss-attack">XSS Attack</Link>
+                    </li>
+                    <li>
+                        <Link to="/sensitive-data-exposure">Sensitive Data Exposure</Link>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    );
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <div>
+                <h1>Security App</h1>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/xss-attack" element={<XSSAttack />} />
+                    <Route path="/sensitive-data-exposure" element={<SensitiveDataExposure />} />
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
