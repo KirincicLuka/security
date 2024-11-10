@@ -7,12 +7,12 @@ const SensitiveDataExposure = () => {
     const [encryption, setEncryption] = useState(false);
 
     const saveData = async () => {
-        await axios.post('http://localhost:5000/api/toggle-encryption', { encryptionEnabled: encryption });
-        await axios.post('http://localhost:5000/api/save-data', { data });
+        await axios.post('https://security-backend-1.onrender.com/api/toggle-encryption', { encryptionEnabled: encryption });
+        await axios.post('https://security-backend-1.onrender.com/api/save-data', { data });
     };
 
     const getData = async () => {
-        const response = await axios.get('http://localhost:5000/api/get-data');
+        const response = await axios.get('https://security-backend-1.onrender.com/api/get-data');
         setRetrievedData(response.data.data);
     };
 
